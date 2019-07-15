@@ -23,7 +23,7 @@ export default function Form(props) {
 
     const handleSubmit = e => {
         e.preventDefault();
-        // name=formMember.name;
+        name=formMember.name;
         props.member.update ? props.updateMember(name, formMember) : 
         props.addMember(formMember);
         setFormMember({name: '', email: '', role: '', update: false});
