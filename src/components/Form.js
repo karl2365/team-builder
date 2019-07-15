@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react'
+import './component.css';
 
 export default function Form(props) {
 
     const [formMember, setFormMember] = useState({});
-    const name = props.member.name;
-    console.log(props);
-    console.log('props name', props.member.name);
+    let name = props.member.name;
+    // console.log('props', props);
+    // console.log('props name', props.member.name);
     // if (props.member.update) {
         useEffect(() => {
-            console.log('props', props);
+            // console.log('props', props);
             setFormMember({...props.member[0]})
+            name=formMember.name;
+            console.log(name)
+            console.log(formMember)
         },[])
     
     // }
@@ -19,6 +23,7 @@ export default function Form(props) {
 
     const handleSubmit = e => {
         e.preventDefault();
+        // name=formMember.name;
         props.member.update ? props.updateMember(name, formMember) : 
         props.addMember(formMember);
         setFormMember({name: '', email: '', role: '', update: false});
@@ -28,15 +33,15 @@ export default function Form(props) {
         <div>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Name
+                    Name: &nbsp;
                     <input type='text' onChange={handleChange} name='name' placeholder='name' value={formMember.name} />
                 </label>
                 <label>
-                    Email
+                    Email: &nbsp;
                     <input type='email' onChange={handleChange} name='email' placeholder='email' value={formMember.email} />
                 </label>
                 <label>
-                    Role
+                    Role: &nbsp;
                     <input type='text' onChange={handleChange} name='role' placeholder='role' value={formMember.role} />
                 </label>
                 <button> submit </button>

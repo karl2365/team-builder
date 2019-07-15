@@ -1,9 +1,12 @@
-import React from 'react'
-
+import React from 'react';
+import './component.css';
 export default function TeamMember(props) {
     return (
-        <div>
-            <button onClick={() => props.setUpdateMember(props.member.name)}>update</button> {props.member.name} {props.member.email} {props.member.role}
+        <div className='list'>
+            <button onClick={() => props.setUpdateMember(props.member.name)}>update</button> 
+            <p>Name:  {props.member.name}</p> 
+            <p>Email: {props.member.email}</p> 
+            <p>Role: {props.member.role}</p>
         </div>
     )
 }
