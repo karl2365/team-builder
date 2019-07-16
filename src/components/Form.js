@@ -4,26 +4,27 @@ import './component.css';
 export default function Form(props) {
 
     const [formMember, setFormMember] = useState({});
-    let name = props.member.name;
+    let name;
+    if(props.member[0]) {name=props.member[0].name}
     // console.log('props', props);
     // console.log('props name', props.member.name);
     // if (props.member.update) {
         useEffect(() => {
             // console.log('props', props);
             setFormMember({...props.member[0]})
-            name=formMember.name;
-            console.log(name)
-            console.log(formMember)
+
         },[])
     
     // }
+    console.log('name out of useeffect', name)
+
     const handleChange = e => {
         setFormMember({...formMember, [e.target.name]: e.target.value});
     }
 
     const handleSubmit = e => {
         e.preventDefault();
-        name=formMember.name;
+        // name=formMember.name;
         props.member.update ? props.updateMember(name, formMember) : 
         props.addMember(formMember);
         setFormMember({name: '', email: '', role: '', update: false});
